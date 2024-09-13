@@ -95,16 +95,16 @@ class PhoneBook(QMainWindow):
                 phone2 = results[0][2] if len(self.NEW_PHONE2.text().strip()) == 0 else self.NEW_PHONE2.text()
                 gmail = results[0][3] if len(self.NEW_GMAIL.text().strip()) == 0 else self.NEW_GMAIL.text()
 
-            self.cursor.execute(f'UPDATE contacts SET Name = ?, Phone1 = ?, Phone2 = ?, Gmail = ? WHERE Name = ?', 
+                self.cursor.execute(f'UPDATE contacts SET Name = ?, Phone1 = ?, Phone2 = ?, Gmail = ? WHERE Name = ?', 
                            (name, phone1, phone2, gmail, self.SEARCH2.text()))
             
-            if self.cursor.rowcount:
-                self.LOG.append(f'Contact {self.SEARCH2.text()} updated successfully.')
+                if self.cursor.rowcount:
+                    self.LOG.append(f'Contact {self.SEARCH2.text()} updated successfully.')
 
-                self.NEW_NAME.clear()
-                self.NEW_PHONE1.clear()
-                self.NEW_PHONE2.clear()
-                self.NEW_GMAIL.clear()
+                    self.NEW_NAME.clear()
+                    self.NEW_PHONE1.clear()
+                    self.NEW_PHONE2.clear()
+                    self.NEW_GMAIL.clear()
             else:
                 self.LOG.append(f'Contact {self.SEARCH2.text()} not found.')
             
